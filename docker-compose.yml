@@ -1,0 +1,55 @@
+
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: laravel_training_4
+        uid: 10000
+      context: ./
+      dockerfile: Dockerfile
+    image: laravel_training_4-image
+    ports:
+      - 8000:8000
+    container_name: laravel_training_4-app
+    restart: unless-stopped
+    working_dir: /www/
+    volumes:
+      - ./:/www
+  # Container run job schedule 
+  scheduler:
+    build:
+      args:
+        user: laravel_training_4
+        uid: 10000
+      context: ./
+      dockerfile: DockerFile/schedule/Dockerfile
+    image: laravel_training_4
+    container_name: laravel-scheduler
+    depends_on:
+      - app
+    volumes:
+      - .:/var/www/html
+
+  mailhog:
+    image: mailhog/mailhog
+    logging:
+      driver: 'none'
+    ports:
+      - 1025:1025 
+      - 8025:8025 
+
+  db:
+    image: mysql:8.0
+    ports:
+      - "3307:3306"
+    container_name: laravel_training_4-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ALLOW_EMPTY_PASSWDB_HOSTORD: 1
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_USER: ${DB_USERNAME}
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d

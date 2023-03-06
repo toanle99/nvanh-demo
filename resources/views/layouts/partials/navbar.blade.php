@@ -62,7 +62,7 @@
   <div class="header-right">
     <div class="">
       <span>{{ isset($user) ? $user->cost : 0 }}</span> 
-      <img src="./static/img/1012.01725b9.png" alt=""> 
+      <img src="{{URL::asset('/image/1012.01725b9.png')}}" style="width: 1.1rem;"alt=""> 
       <span class="refresh-icon">
         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAYFBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////98JRy6AAAAH3RSTlMAwEL4zce5IDwFpJw0EtusXCsL7OSRdmxjGLJ9VkqKCMWapwAAARNJREFUOMvN01lygzAURNEGiXk2GEM83P3vMha2HFdQ/J1TxdfrB4hq9GbN5zKxUbXUCsk7XsZzpk0x+PHwBdhjn+fXuZuAWU7Hc35yW428OAWbSWqfgSNUhd7FE6aWEvz8ol+KCDLZLbBArr0vxsc7rNArxHIsXSCiVNABjJEG0B96GN2jbvvdMnJSMGrgsAtkvCim1V4WP9W6UemjIV71rxVppI9WUB95F+1csWrxUu0knO4X7RA7ReiLFy5gGoVFVO4uKaOCFigkS1aSKiCHXi7QyFAG55W2QKzakGT7NnXyAQ0TnN57U6f4Gkxb5Q8dmHO9HafILq5ri//p0sfm1XI3JUlrAFMGjl5XLRtj55/xN6DMF7WD+n0LAAAAAElFTkSuQmCC" alt="" class="">
       </span>

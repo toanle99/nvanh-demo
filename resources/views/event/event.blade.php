@@ -1,4 +1,4 @@
-@extends('layouts.app-header-no-footer')
+@extends('layouts.app-master')
 
 @section('content')
 <style>
@@ -367,104 +367,6 @@ a {
     text-decoration: none;
     color: #000;
 }
-.creditFooter {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 99;
-}
-.creditFooter .setting {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  background: #fff;
-  height: 2.5rem;
-  border-top: 0.0625rem solid #e6e6e6;
-  border-bottom: 0.0625rem solid #e6e6e6;
-}
-.creditFooter .setting .setMoney {
-  margin-left: 0.625rem;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  font-size: 0.8125rem;
-}
-.creditFooter .btnGroup {
-  height: 3.75rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  background: #333333;
-  color: #f7f7f7;
-  font-size: 0.9375rem;
-  text-align: center;
-}
-.creditFooter .btnGroup {
-  color: #f7f7f7;
-  font-size: 0.9375rem;
-  text-align: center;
-}
-.creditFooter .btnGroup .clearBtn {
-  margin-left: 0.625rem;
-  width: 3.4375rem;
-  height: 1.875rem;
-  line-height: 1.875rem;
-  border: 0.0625rem solid #9a9a9a;
-  border-radius: 0.1875rem;
-}
-.creditFooter .btnGroup .notes {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  flex-grow: 1;
-  padding: 0 0.75rem;
-}
-.creditFooter .btnGroup .bettingBtn.disabled {
-  background: #aaa !important;
-}
-.creditFooter .btnGroup .bettingBtn {
-  background: #e54042;
-  height: 3.75rem;
-  line-height: 1.2;
-  width: 6.25rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-}
-.creditFooter .btnGroup .notes strong {
-  color: red;
-  margin: 0 0.25rem;
-} 
-.keyboardInput {
-  width: 6.125rem;
-  height: 1.875rem;
-  line-height: 1.875rem;
-  text-align: center;
-  border: 0.0625rem solid #c5c5c1;
-  border-radius: 0.1875rem;
-  padding: 0 0.1875rem; 
-  display: flex;
-  -webkit-box-align: center; 
-  align-items: center;
-  -webkit-box-pack: center; 
-  justify-content: center;
-  margin-right: 0.5rem;
-}
 </style>
 <div class="lotteryMainTab">
     <div class="left">
@@ -477,7 +379,7 @@ a {
     <div class="lotteryMsg">
         <div class="top">
             <div class="time">
-                <p class="id-now" d-id="0" d-date="{{date('Ymd')}}">lịch sử</p> 
+                <p>20230302235lịch sử</p> 
                 <div data-v-6bb17ab0="" class="count_down" showgame="true">
                     <div data-v-6bb17ab0="" class="periods_time">
                         <div data-v-6bb17ab0="" class="showGame">
@@ -492,9 +394,8 @@ a {
         </div> 
         <div class="ks openInfo">
             <div class="foot">
-                @foreach($events as $event)
                 <div>
-                    <div class="periods">{{date('Ymd').$event->id}} kết quả nhiệm vụ
+                    <div class="periods">20230302234kết quả nhiệm vụ
                         <svg type="ios-arrow-down" size="13" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 512 512" class="vux-x-icon vux-x-icon-ios-arrow-down">
                             <path d="M396.6 160l19.4 20.7L256 352 96 180.7l19.3-20.7L256 310.5z"></path>
                         </svg>
@@ -505,8 +406,6 @@ a {
                         <div class="three" style="background-image: url(&quot;{{URL::asset('/image/diceIcon.f2d1a6a.png')}}&quot;);"></div>
                     </div>
                 </div>
-                @break
-                @endforeach
             </div>
         </div>
     </div> 
@@ -532,7 +431,7 @@ a {
             @endforeach
         </div> 
         <div class="goHistory">
-            <div><a href="{{route('event.history')}}">xem thêm</a></div>
+            <div><a href="#">xem thêm</a></div>
         </div> 
     </div>
 
@@ -681,21 +580,6 @@ a {
             </div>
         </div> 
     </div>
-</div> 
-<div class="creditFooter">
-    <div class="setting">
-        <div class="setMoney"> 
-            <input type="number" class="keyboardInput" min="0">  
-            <p>VNĐ</p>
-        </div>
-    </div> 
-    <div class="btnGroup">
-        <div class="clearBtn">Xóa bỏ</div> 
-        <div class="notes">
-            <p>cộng<span><strong>0</strong>ghi chú,cộng</span> <span><strong>0</strong>VNĐ</span></p>
-        </div> 
-        <div class="bettingBtn btn disabled">xác nhận nhiệm vụ</div>
-    </div>
 </div>
 <script> 
     // function startTimer(duration, display) {
@@ -740,8 +624,6 @@ a {
                     dataType:'JSON',
                     success: function(result){ 
                         console.log(result); 
-                        $('.id-now').text($('.id-now').attr('d-date')+result.id+' lịch sử ');
-                        $('.id-now').attr('d-id',+result.id);
                         const a = new Date(result.created_at),
                         b = new Date(),
                         difference = dateDiffInSeconds(a, b); 
@@ -754,9 +636,6 @@ a {
                     dataType:'JSON',
                     success: function(result){
                         console.log(result); 
-                        
-                        $('.ks.openInfo .foot .periods').html($('.id-now').attr('d-date')+result.id+' kết quả nhiệm vụ <svg type="ios-arrow-down" size="13" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 512 512" class="vux-x-icon vux-x-icon-ios-arrow-down"><path d="M396.6 160l19.4 20.7L256 352 96 180.7l19.3-20.7L256 310.5z"></path></svg>');
-
                         console.log("one: "+ result.one +', two: '+ result.two +", three: " + result.three);
                         $('.lotteryNumber.show-event').addClass('noOpen');
                         display.text('Đang quay xổ số');
@@ -788,20 +667,6 @@ a {
                             case 6: $('.lotteryNumber.show-event').children().eq(2).attr('class', 'six'); break;
                         }
                         setTimeout(function () { $(".lotteryNumber.show-event").removeClass("noOpen"); }, 2000); 
-                        $('.more .tbody').children('.more_item').last().remove();
-                        var sum = result.one+result.two+result.three;
-                        var taixiu, chanle;
-                        if(sum > 10) {
-                            taixiu = 'TÀI';
-                        }else {
-                            taixiu = 'XỈU';
-                        }
-                        if(sum % 2 == 0) {
-                            chanle = 'CHẴN';
-                        }else {
-                            chanle = 'LẺ';
-                        }
-                        $('.more .tbody').html('<div class="more_item"><div class="periods">'+$('.id-now').attr('d-date')+result.id+'</div> <div class="lotteryNumber"> <div class="'+$(".lotteryNumber.show-event").children().eq(0).attr("class")+'" style="background-image: url(&quot;{{URL::asset('/image/diceIcon.f2d1a6a.png')}}&quot;);"></div><div class="'+$(".lotteryNumber.show-event").children().eq(1).attr("class")+'" style="background-image: url(&quot;{{URL::asset('/image/diceIcon.f2d1a6a.png')}}&quot;);"></div><div class="'+$(".lotteryNumber.show-event").children().eq(2).attr("class")+'" style="background-image: url(&quot;{{URL::asset('/image/diceIcon.f2d1a6a.png')}}&quot;);"></div></div> <div class="lotteryred">'+taixiu+'</div> <div class="lotteryred">'+chanle+'</div> <div class="openTime">'+moment(result.updated_at).format('LTS')+'</div></div>' + $('.more .tbody').html());
                     }
                 });  
             }
@@ -823,8 +688,6 @@ a {
             dataType:'JSON',
             success: function(result){
                 console.log(result); 
-                $('.id-now').text($('.id-now').attr('d-date')+result.id+' lịch sử');
-                $('.id-now').attr('d-id', result.id);
                 const a = new Date(result.created_at),
                 b = new Date(),
                 difference = dateDiffInSeconds(a, b);
@@ -839,10 +702,10 @@ a {
             success: function(result){
                 console.log(result); 
                 console.log("one: "+ result.one +', two: '+ result.two +", three: " + result.three);
+                // $('.lotteryNumber.show-event').addClass('noOpen');
                 $('.lotteryNumber.show-event').children().eq(0).attr('class', '');
                 $('.lotteryNumber.show-event').children().eq(1).attr('class', '');
                 $('.lotteryNumber.show-event').children().eq(2).attr('class', '');
-                
                 switch (result.one) {
                     case 1: $('.lotteryNumber.show-event').children().eq(0).attr('class', 'one'); break;
                     case 2: $('.lotteryNumber.show-event').children().eq(0).attr('class', 'two'); break;
@@ -873,68 +736,14 @@ a {
          
     });
     $(document).ready(function () {
-        var sum_select = 0, select_arr = []; 
-
-        moment.locale('vi');        
-        // $('.itemBall').click(function(e) {  
-        //     if($(this).parents('.vux-flexbox-item').hasClass('select'))
-        //         $(this).parents('.vux-flexbox-item').removeClass('select');
-        //     else
-        //         $(this).parents('.vux-flexbox-item').addClass('select');
-        // });
         $('.itemBall').click(function(e) {  
-            $(this).parents('.vux-flexbox-item').toggleClass('select');
-            if($(this).parents('.vux-flexbox-item').hasClass('select')){
-                sum_select ++;
-            } else {
-                sum_select --;
-            }
-            if(sum_select == 0) {
-                $('.bettingBtn.btn').addClass('disabled');
-            }
-            if(sum_select == 1 && $('.keyboardInput').val() > 0) {
-                $('.bettingBtn.btn').removeClass('disabled');
-            }
-            $('.notes').html('<p>cộng<span><strong>'+sum_select+'</strong>ghi chú,cộng</span> <span><strong>'+sum_select*$('.keyboardInput').val()+'</strong>VNĐ</span></p>');
-        });
-        $(":input.keyboardInput").bind('keyup change click', function (e) {
-            if (! $(this).data("previousValue") || $(this).data("previousValue") != $(this).val()) {
-                if ($(this).val() > 0 && sum_select > 0 ) {
-                    $('.bettingBtn.btn').removeClass('disabled');  
-                } else {
-                    $('.bettingBtn.btn').addClass('disabled');
-                }
-                $('.notes').html('<p>cộng<span><strong>'+sum_select+'</strong>ghi chú,cộng</span> <span><strong>'+sum_select*$('.keyboardInput').val()+'</strong>VNĐ</span></p>');  
-                $(this).data("previousValue", $(this).val());
-            }
-        });
-        $('div.clearBtn').click(function(){
-            sum_select = 0;
-            $('.vux-flexbox-item.select').removeClass('select');
-            $(":input.keyboardInput").val(0);
-            $('.notes').html('<p>cộng<span><strong>'+sum_select+'</strong>ghi chú,cộng</span> <span><strong>'+sum_select*$('.keyboardInput').val()+'</strong>VNĐ</span></p>');  
-            $('.bettingBtn.btn').addClass('disabled');
+            if($(this).parents('.vux-flexbox-item').hasClass('select'))
+                $(this).parents('.vux-flexbox-item').removeClass('select');
+            else
+                $(this).parents('.vux-flexbox-item').addClass('select');
         });
         $('.ks.openInfo').click(function(){
             $(".more").toggleClass("showMore");
-        });
-        $("div.bettingBtn.btn:not(.first-bar)").click(function(){
-            select_arr = [] ; 
-            $(".vux-flexbox-item.select").each(function() { 
-                select_arr.push($(this).children().attr('d-data'));
-            });
-            console.log(select_arr);
-            console.log( $('.id-now').attr('d-id'));
-            $.ajax({ 
-                type: 'post',
-                url: "/post-user-event", 
-                dataType:'JSON',
-                data: { 'cost': $(":input.keyboardInput").val(), 'event':  $('.id-now').attr('d-id'),'data': select_arr, _token:'{{ csrf_token() }}'}, 
-                success: function(result){
-                    console.log(result);
-                }
-            });  
-            // post-user-event
         });
     });
 </script>

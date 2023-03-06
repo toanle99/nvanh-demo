@@ -18,6 +18,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('event_id')->constrained('events');
             $table->string('select')->nullabe();
+            $table->integer('cost')->nullabe();
+            $table->string('eat')->nullabe(); //
+            $table->integer('send')->nullabe()->default(0); // 
             $table->rememberToken();
             $table->timestamps();
         });

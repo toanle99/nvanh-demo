@@ -31,7 +31,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         
         Route::get('/userinfo', 'UserController@info')->name('user.info');
         Route::get('/event', 'HomeController@event')->name('event');
-
+        Route::get('/event-history', 'EventController@eventHistory')->name('event.history');
+        Route::get('/get-event-now', 'EventController@getNow')->name('event.now');
+        Route::get('/get-event-old-now', 'EventController@getOldNow')->name('event.old-now');
+        Route::post('/post-user-event', 'UserEventController@setCostNow')->name('userevent.cost.now');
+        
+        
+        
+        
+        
+        
         Route::post('/create-comment', 'CommentController@create')->name('comment.create');
         Route::resource('posts', PostController::class);
 
